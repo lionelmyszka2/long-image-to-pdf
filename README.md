@@ -1,15 +1,25 @@
 # Long Image to PDF
 
-Petit outil local pour transformer une capture d'ecran tres longue en PDF A4
+Petit outil pour transformer une capture d'ecran tres longue en PDF A4
 lisible, page par page.
 
-## Installation
+## Application web
+
+L'application fonctionne directement dans le navigateur. L'image reste sur ton
+ordinateur: elle n'est pas envoyee a un serveur.
+
+Ouvre la page GitHub Pages du depot, depose une image, puis clique sur
+`Generer le PDF`.
+
+## Version terminal
+
+### Installation
 
 ```bash
 python3 -m pip install -r requirements.txt
 ```
 
-## Utilisation
+### Utilisation
 
 ```bash
 python3 long_image_to_pdf.py /chemin/vers/capture.png
@@ -27,7 +37,7 @@ Exemple avec le fichier de test :
 python3 long_image_to_pdf.py Capture.png -o Capture-lisible.pdf
 ```
 
-## Options utiles
+### Options utiles
 
 ```bash
 --page-size a4       # a4 ou letter

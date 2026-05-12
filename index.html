@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Long Image to PDF</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="workspace" aria-labelledby="app-title">
+        <div class="intro">
+          <p class="eyebrow">PDF lisible</p>
+          <h1 id="app-title">Image longue vers PDF</h1>
+        </div>
+
+        <form class="tool-panel" id="converter-form">
+          <label class="drop-zone" id="drop-zone">
+            <input id="file-input" type="file" accept="image/*" />
+            <span class="drop-icon" aria-hidden="true">+</span>
+            <span class="drop-title">Choisir une image</span>
+            <span class="drop-meta" id="file-meta">PNG, JPG, WEBP</span>
+          </label>
+
+          <div class="controls-grid">
+            <label>
+              <span>Format</span>
+              <select id="page-size">
+                <option value="a4">A4</option>
+                <option value="letter">Letter</option>
+              </select>
+            </label>
+
+            <label>
+              <span>Marge</span>
+              <input id="margin" type="number" min="0" max="1.25" step="0.05" value="0.35" />
+            </label>
+
+            <label>
+              <span>Qualité</span>
+              <input id="quality" type="range" min="0.65" max="0.95" step="0.05" value="0.85" />
+            </label>
+
+            <label>
+              <span>Chevauchement</span>
+              <input id="overlap" type="number" min="0" max="400" step="20" value="0" />
+            </label>
+          </div>
+
+          <button class="primary-action" id="convert-button" type="submit" disabled>
+            Générer le PDF
+          </button>
+
+          <div class="status-line" id="status-line" role="status">
+            En attente d'une image.
+          </div>
+        </form>
+      </section>
+
+      <aside class="preview-panel" aria-label="Aperçu">
+        <div class="preview-header">
+          <span>Aperçu</span>
+          <strong id="page-count">0 page</strong>
+        </div>
+        <div class="page-stack" id="page-stack" aria-hidden="true">
+          <div class="empty-preview">PDF</div>
+        </div>
+      </aside>
+    </main>
+
+    <script src="app.js" defer></script>
+  </body>
+</html>
