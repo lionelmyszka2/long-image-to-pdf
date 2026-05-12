@@ -3,7 +3,7 @@ const PAGE_SIZES = {
   letter: { width: 8.5, height: 11 },
 };
 
-const DPI = 150;
+const DPI = 220;
 const PDF_POINTS_PER_INCH = 72;
 
 const form = document.querySelector("#converter-form");
@@ -326,7 +326,7 @@ function buildPdfBytes(pageImages, metrics) {
     ]);
   });
 
-  objects.unshift([textBytes(`<< /Type /Pages /Kids ${pageIds.map((id) => `${id} 0 R`).join(" ")}] /Count ${pageIds.length} >>`)]);
+  objects.unshift([textBytes(`<< /Type /Pages /Kids [${pageIds.map((id) => `${id} 0 R`).join(" ")}] /Count ${pageIds.length} >>`)]);
   objects.unshift([textBytes(`<< /Type /Catalog /Pages ${pagesId} 0 R >>`)]);
 
   pushText("%PDF-1.4\n%\xE2\xE3\xCF\xD3\n");
@@ -376,9 +376,6 @@ function renderPreview(urls, totalPages) {
   urls.forEach((url, index) => {
     const page = document.createElement("div");
     page.className = "preview-page";
-    page.style.left = `${18 + (index % 3) * 14}%`;
-    page.style.top = `${8 + index * 9}%`;
-    page.style.zIndex = String(index + 1);
 
     const img = document.createElement("img");
     img.src = url;
